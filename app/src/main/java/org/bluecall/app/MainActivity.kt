@@ -4,8 +4,6 @@ import android.app.Activity
 import android.os.Bundle
 import android.graphics.Color
 import android.view.Gravity
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -14,72 +12,32 @@ class MainActivity : Activity() {
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    val layout = LinearLayout(this).apply {
-        orientation = LinearLayout.VERTICAL
-        gravity = Gravity.CENTER
-        setPadding(32, 32, 32, 32)
-        setBackgroundColor(Color.WHITE)
-    }
+    val layout = LinearLayout(this)
+    layout.orientation = LinearLayout.VERTICAL
+    layout.gravity = Gravity.CENTER
+    layout.setPadding(32, 32, 32, 32)
+    layout.setBackgroundColor(Color.WHITE)
 
-    val title = TextView(this).apply {
-        text = "BlueCall"
-        textSize = 34f
-        setTextColor(Color.rgb(25, 75, 180))
-        gravity = Gravity.CENTER
-    }
+    val title = TextView(this)
+    title.text = "BlueCall"
+    title.textSize = 32f
+    title.setTextColor(Color.BLUE)
+    title.gravity = Gravity.CENTER
 
-    val subtitle = TextView(this).apply {
-        text = "Offline Bluetooth Voice Calling"
-        textSize = 16f
-        setTextColor(Color.DKGRAY)
-        gravity = Gravity.CENTER
-    }
+    val description = TextView(this)
+    description.text = "Offline Bluetooth Voice Calling"
+    description.textSize = 18f
+    description.gravity = Gravity.CENTER
+    description.setPadding(0, 24, 0, 24)
 
-    val status = TextView(this).apply {
-        text = "Ready to connect"
-        textSize = 16f
-        gravity = Gravity.CENTER
-        setPadding(0, 40, 0, 24)
-    }
+    val status = TextView(this)
+    status.text = "Your communication starts here."
+    status.textSize = 16f
+    status.gravity = Gravity.CENTER
 
-    val findButton = Button(this).apply {
-        text = "Find Nearby Phones"
-        setOnClickListener {
-            status.text = "Bluetooth discovery will be added next."
-        }
-    }
-
-    layout.addView(
-        title,
-        LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    )
-
-    layout.addView(
-        subtitle,
-        LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    )
-
-    layout.addView(
-        status,
-        LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    )
-
-    layout.addView(
-        findButton,
-        LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    )
+    layout.addView(title)
+    layout.addView(description)
+    layout.addView(status)
 
     setContentView(layout)
 }
