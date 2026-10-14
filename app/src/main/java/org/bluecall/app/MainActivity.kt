@@ -65,6 +65,8 @@ class MainActivity : Activity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             permissions.add(Manifest.permission.BLUETOOTH_CONNECT)
             permissions.add(Manifest.permission.BLUETOOTH_SCAN)
+        } else {
+            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION)
         }
 
         val missingPermissions = permissions.filter {
@@ -109,7 +111,8 @@ class MainActivity : Activity() {
                 checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) ==
                     PackageManager.PERMISSION_GRANTED
             } else {
-                true
+                checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) ==
+                    PackageManager.PERMISSION_GRANTED
             }
 
         statusText.text = """
